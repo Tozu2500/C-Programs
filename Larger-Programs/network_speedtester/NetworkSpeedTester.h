@@ -1,68 +1,54 @@
-#ifndef NETWORKSPEEDTESTER_H
-#define NETWORKSPEEDTESTER_H
+#ifndef NETWORK_SPEED_TESTER_H
+#define NETWORK_SPEED_TESTER_H
 
 #include <string>
 #include <vector>
 #include <chrono>
-#include <memory>
 
-#ifdef _WIN32
-#include <winsock2.h>
-#include <ws2tcpip.h>
-#pragma comment(lib, "ws2_32.lib")
-#endif
-
-struct TestResult {
+struct SpeedTestResult {
     double downloadSpeed;
     double uploadSpeed;
     double latency;
     bool success;
-    std::string error;
-};
-
-struct TestServer {
-    std::string url;
-    std::string host;
-    int port;
-    std::string path;
+    std::string errorMessage;
 };
 
 class NetworkSpeedTester {
 private:
-    std::vector<TestServer> testServers;
-    int timeout;
-    bool wsaInitialized;
+    std::string testServer;
+    int testPort;
+    size_t testDataSize;
+    int timeoutSeconds;
 
-    // Helper methods
+    // Helpers
     bool initializeWinsock();
     void cleanupWinsock();
-    bool parseUrl(const std::string& url, TestServer& server);
-    std::string createHttpRequest(const std::string& host, const std::string& path, const std::string& method = "GET", size_t contentLength = 0);
-    bool sendHttpRequest(const std::string& host, int port, const std::string& request, std::string& response);
     double measureLatency(const std::string& host, int port);
-    double measureDownloadSpeed(const TestServer& server);
-    double measureUploadSpeed(const TestServer& server);
-    std::string generateRandomData(size_t size);
+    double measureDownloadSpeed(const std::string& host, int port);
+    double measureUploadSpeed(const std::string& host, int port);
+    std::string generateTestData(size_t size);
+    std::vector<char> downloadData(const std::string& host, int port, const std::string& path);
+    bool uploadData(const std::string& host, int port, const std::string& data);
 
 public:
-    NetworkSpeedTester();
+    NetworkSpeedTester(const std::string& server = "httpbin.org", int port = 80);
     ~NetworkSpeedTester();
 
-    // Config
-    void addTestServer(const std::string& url);
-    void setTimeout(int timeoutMs);
-    void setDefaultServers();
+    // Config methods
+    void setTestServer(const std::string& server);
+    void setTestPort(int port);
+    void setTestDataSize(size_t size);
+    void setTimeout(int seconds);
 
-    // Testing methods
-    TestResult runSpeedTest();
-    TestResult runLatencyTest();
-    TestResult runDownloadTest();
-    TestResult runUploadTest();
+    // Main testing methods
+    SpeedTestResult runFullTest();
+    double testDownloadSpeed();
+    double testUploadSpeed();
+    double testLatency();
 
-    // Utility methods
-    void printResults(const TestResult& result);
+    // Utils
     std::string formatSpeed(double speedMbps);
-    std::string formatLatency(double latencyMs);
+    void printResults(const SpeedTestResult& result);
 };
 
-#endif // NETWORKSPEEDTESTER_H
+#endif // NETWORK_SPEED_TESTER_H
