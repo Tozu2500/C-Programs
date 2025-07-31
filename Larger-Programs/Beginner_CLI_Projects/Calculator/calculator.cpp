@@ -1,3 +1,4 @@
+#define _USE_MATH_DEFINES
 #include "calculator.h"
 #include "expression_parser.h"
 #include <cmath>
@@ -120,4 +121,17 @@ void Calculator::addToHistory(const std::string& operation) {
     if (history.size() > 50) {
         history.erase(history.begin());
     }
+}
+
+void Calculator::clearHistory() {
+    history.clear();
+}
+
+std::vector<std::string> Calculator::getHistory() const {
+    return history;
+}
+
+double Calculator::evaluateExpression(const std::string& expression) {
+    ExpressionParser parser;
+    return parser.parse(expression, *this);
 }
