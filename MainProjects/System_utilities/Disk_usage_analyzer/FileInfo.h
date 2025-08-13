@@ -15,7 +15,8 @@ public:
     bool isDirectory() const;
     void setSize(uint64_t size);
     void addChild(const FileInfo& child);
-    std::vector<FileInfo>& getChildren() const;
+    std::vector<FileInfo>& getChildren();
+    const std::vector<FileInfo>& getChildren() const;
     void sortChildren();
     std::string getFormattedSize() const;
     double getPercentage(uint64_t totalSize) const;
@@ -27,4 +28,4 @@ private:
     std::vector<FileInfo> children;
 };
 
-#endif // FILEINFO_H
+#endif // FILEINFO_H    
