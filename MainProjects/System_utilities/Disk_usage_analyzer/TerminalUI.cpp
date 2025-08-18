@@ -387,7 +387,7 @@ int TerminalUI::getConsoleHeight() {
 }
 
 std::string TerminalUI::truncateString(const std::string& str, int maxLength) {
-    if (str.length() <= maxLength) {
+     if (str.length() <= static_cast<size_t>(maxLength)) {
         return str;
     }
 
