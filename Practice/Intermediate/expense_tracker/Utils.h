@@ -5,6 +5,6 @@
 #include <sstream>
 
 std::string now_date();
-std::string trim(const std::string s&);
+std::string trim(const std::string &s);
 double parse_double(const std::string &s);
 long long next_id();
