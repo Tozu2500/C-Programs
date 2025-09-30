@@ -68,6 +68,18 @@ Transaction Transaction::deserialize(const string &line)
     if (!cur.empty()) parts.push_back(cur);
     for (auto &p : parts)
     {
-        
+        size_t eq = p.find('=');
+        if (eq == string::npos) continue;
+        string k = p.substr(0, eq);
+        string v = p.substr(eq + 1);
+        if (k == "TID") t.id = stoll(v);
+        else if (k == "DATE") t.date = v;
+        else if (k == "AMT") t.amount = parse_double(v);
+        else if (k == "CAT") t.category = v;
+        else if (k == "NOTE") t.note = v;
+        else if (k == "ACC") t.account = v;
+        else if (k == "REC") t.recurring = (v == "1");
+        else if (k == "RINT") t.recurrence = v;
     }
+    return t;
 }
