@@ -5,3 +5,9 @@ It was originally meant to be for interest counting with investing but then I go
 little bit off the course.
 
 Next time even better!
+
+To run:
+Use the .bat files to build and run the project. The run.bat file might be enough, since the
+object files are included with this one.
+
+Tozu 1.10.2025 21:15
