@@ -4,7 +4,6 @@
 #include <iostream>
 #include <limits>
 #include <iomanip>
-
 using namespace std;
 
 void show_accounts(const AppState &S)

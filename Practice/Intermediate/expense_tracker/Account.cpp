@@ -2,13 +2,12 @@
 #include "Utils.h"
 #include <sstream>
 #include <iomanip>
-
 using namespace std;
 
 Account::Account()
 {
     name = "";
-    balance = 0.00;
+    balance = 0.0;
 }
 
 Account::Account(const string &n, double b)
@@ -20,7 +19,7 @@ Account::Account(const string &n, double b)
 string Account::serialize() const
 {
     ostringstream ss;
-    ss << "ACC:" << name << ":" << fixed << setprecision(2) << balance;
+    ss << "ACC:" << name << ':' << fixed << setprecision(2) << balance;
     return ss.str();
 }
 

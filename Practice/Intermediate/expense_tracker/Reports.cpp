@@ -4,7 +4,6 @@
 #include <map>
 #include <iomanip>
 #include <cmath>
-
 using namespace std;
 
 double future_value_compound(double principal, double annual_rate, int years, int compounds_per_year = 1)
@@ -54,8 +53,8 @@ void monthly_summary(const AppState &S, const string &year_month)
     cout << "Income: " << fixed << setprecision(2) << income << "\n";
     cout << "Expense: " << fixed << setprecision(2) << expense << "\n";
     cout << "Net: " << fixed << setprecision(2) << income - expense << "\n";
-    cout << "By cateogry:\n";
-    for (auto &kv : by_category) cout << " " << kv.first << ": " << kv.second << "\n";
+    cout << "By category:\n";
+    for (auto &kv : by_category) cout << "  " << kv.first << ": " << kv.second << "\n";
 }
 
 void export_csv(const AppState &S, const string &fname)
@@ -66,7 +65,7 @@ void export_csv(const AppState &S, const string &fname)
     for (auto &t : S.transactions)
     {
         string n = t.note;
-        if (n.find(",") != string::npos || n.find('"') != string::npos)
+        if (n.find(',') != string::npos || n.find('"') != string::npos)
         {
             string tmp;
             for (char c : n)
@@ -76,8 +75,6 @@ void export_csv(const AppState &S, const string &fname)
             }
             n = '"' + tmp + '"';
         }
-        ofs << t.id << ',' << t.date << ',' << t.amount << ',' << '"' << t.category <<
-        '"' << ',' << n << ',' << '"' << t.account << '"' << ',' << (t.recurring ? "1" : "0") <<
-        ',' << t.recurrence << '\n';
+        ofs << t.id << ',' << t.date << ',' << t.amount << ',' << '"' << t.category << '"' << ',' << n << ',' << '"' << t.account << '"' << ',' << (t.recurring ? "1" : "0") << ',' << t.recurrence << '\n';
     }
 }

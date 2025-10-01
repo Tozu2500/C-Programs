@@ -3,7 +3,6 @@
 #include <sstream>
 #include <vector>
 #include <iomanip>
-
 using namespace std;
 
 Transaction::Transaction()
@@ -22,6 +21,7 @@ string Transaction::serialize() const
         for (char c : s)
         {
             if (c == '|') r += "\\|";
+            else if (c == '\n') r += "\\n";
             else r += c;
         }
         return r;
@@ -34,7 +34,7 @@ string Transaction::serialize() const
     ss << "|NOTE=" << esc(note);
     ss << "|ACC=" << esc(account);
     ss << "|REC=" << (recurring ? "1" : "0");
-    ss << "|RINT" << recurrence;
+    ss << "|RINT=" << recurrence;
     return ss.str();
 }
 

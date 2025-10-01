@@ -3,7 +3,6 @@
 #include <sstream>
 #include <vector>
 #include <iomanip>
-
 using namespace std;
 
 string Goal::serialize() const

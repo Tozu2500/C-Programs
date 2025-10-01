@@ -1,5 +1,4 @@
 #include "Utils.h"
-
 using namespace std;
 
 string now_date()

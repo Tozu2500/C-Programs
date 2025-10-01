@@ -2,7 +2,6 @@
 #include "Utils.h"
 #include <fstream>
 #include <iostream>
-
 using namespace std;
 
 AppState::AppState()
@@ -29,7 +28,6 @@ void AppState::load(const string &fname)
     transactions.clear();
     goals.clear();
     string line;
-    
     while (getline(ifs, line))
     {
         if (line.empty()) continue;
