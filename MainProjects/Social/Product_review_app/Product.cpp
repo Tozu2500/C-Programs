@@ -14,30 +14,97 @@ Product::Product(int id, const std::string& name, const std::string& category,
       basePrice(price), stockQuantity(stock), averageRating(0.0), 
       totalReviews(0), manufacturer(""), yearReleased(0), isActive(true) {}
 
-int Product::getId() const { return id; }
-std::string Product::getName() const { return name; }
-std::string Product::getCategory() const { return category; }
-std::string Product::getDescription() const { return description; }
-double Product::getBasePrice() const { return basePrice; }
-int Product::getStockQuantity() const { return stockQuantity; }
-std::vector<std::string> Product::getTags() const { return tags; }
-double Product::getAverageRating() const { return averageRating; }
-int Product::getTotalReviews() const { return totalReviews; }
-std::string Product::getManufacturer() const { return manufacturer; }
-int Product::getYearReleased() const { return yearReleased; }
-bool Product::getIsActive() const { return isActive; }
+int Product::getId() const {
+  return id; 
+}
 
-void Product::setId(int id) { this->id = id; }
-void Product::setName(const std::string& name) { this->name = name; }
-void Product::setCategory(const std::string& category) { this->category = category; }
-void Product::setDescription(const std::string& description) { this->description = description; }
-void Product::setBasePrice(double price) { this->basePrice = price; }
-void Product::setStockQuantity(int stock) { this->stockQuantity = stock; }
-void Product::setAverageRating(double rating) { this->averageRating = rating; }
-void Product::setTotalReviews(int reviews) { this->totalReviews = reviews; }
-void Product::setManufacturer(const std::string& manufacturer) { this->manufacturer = manufacturer; }
-void Product::setYearReleased(int year) { this->yearReleased = year; }
-void Product::setIsActive(bool active) { this->isActive = active; }
+std::string Product::getName() const { 
+  return name; 
+}
+
+std::string Product::getCategory() const { 
+  return category; 
+}
+
+std::string Product::getDescription() const { 
+  return description; 
+}
+
+double Product::getBasePrice() const { 
+  return basePrice; 
+}
+
+int Product::getStockQuantity() const { 
+  return stockQuantity; 
+}
+
+std::vector<std::string> Product::getTags() const { 
+  return tags; 
+}
+
+double Product::getAverageRating() const { 
+  return averageRating; 
+}
+
+int Product::getTotalReviews() const { 
+  return totalReviews; 
+}
+
+std::string Product::getManufacturer() const { 
+  return manufacturer; 
+}
+
+int Product::getYearReleased() const { 
+  return yearReleased; 
+}
+
+bool Product::getIsActive() const { 
+  return isActive; 
+}
+
+void Product::setId(int id) { 
+  this->id = id; 
+}
+
+void Product::setName(const std::string& name) { 
+  this->name = name; 
+}
+
+void Product::setCategory(const std::string& category) { 
+  this->category = category; 
+}
+
+void Product::setDescription(const std::string& description) { 
+  this->description = description; 
+}
+
+void Product::setBasePrice(double price) { 
+  this->basePrice = price; 
+}
+
+void Product::setStockQuantity(int stock) { 
+  this->stockQuantity = stock; 
+}
+
+void Product::setAverageRating(double rating) { 
+  this->averageRating = rating; 
+}
+
+void Product::setTotalReviews(int reviews) { 
+  this->totalReviews = reviews; 
+}
+
+void Product::setManufacturer(const std::string& manufacturer) { 
+  this->manufacturer = manufacturer; 
+}
+
+void Product::setYearReleased(int year) { 
+  this->yearReleased = year; 
+}
+
+void Product::setIsActive(bool active) { 
+  this->isActive = active; 
+}
 
 void Product::addTag(const std::string& tag) {
     if (std::find(tags.begin(), tags.end(), tag) == tags.end()) {
@@ -102,3 +169,4 @@ bool Product::matchesSearch(const std::string& query) const {
     
     return false;
 }
+
