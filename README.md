@@ -1,1 +1,1 @@
-# C++ Programs Miscellaneous directory
+# C++ Programs Miscellaneous practice directory
