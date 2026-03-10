@@ -19,4 +19,10 @@ void handleRemove(LRUCache& cache);
 
 void handleClear(LRUCache& cache);
 
+void handleResize(LRUCache& cache);
+
+void showStats(const LRUCache& cache);
+void showEvictionLog(const LRUCache& cache);
+void showHelp();
+
 #endif // UI_H
