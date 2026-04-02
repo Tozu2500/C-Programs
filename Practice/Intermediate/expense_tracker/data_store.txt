@@ -1,4 +1,0 @@
-#EXPTDATA
-INTEREST:0.07
-ACC:Default:-25.50
-TID=1001|DATE=Test Transaction|AMT=-25.50|CAT=Food|NOTE=Lunch|ACC=Default|REC=0|RINT=none

@@ -1,3 +1,0 @@
-id,date,amount,category,note,account,recurring,recurrence
-1001,Test Transaction,-25.5,"Food",Lunch,"Default",0,none
-1001,2025-10-02,25,"food",Test,"new",0,none
